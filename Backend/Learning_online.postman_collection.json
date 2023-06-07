@@ -1,0 +1,374 @@
+{
+	"info": {
+		"_postman_id": "082693c3-b2c5-4eae-8ab7-afa772b06c15",
+		"name": "Learning_online",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20305944",
+		"_collection_link": "https://orange-resonance-958254.postman.co/workspace/My-Workspace~7e9a864d-e264-47fd-8ee1-55aa2a737cd3/collection/20305944-082693c3-b2c5-4eae-8ab7-afa772b06c15?action=share&creator=20305944&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\":\"bagja\",\n    \"email\":\"Barjafaskan@gmail.com\",\n    \"password\":\"Barisan23\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"barjafaskan@gmail.com\",\n    \"password\":\"Barisan23\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Dalam Folder User ini terdari 2 Reques yaitu\n\n1. Register dengan memasukan nama email. dan password\n2. Login dengan memasukan email dan pasword\n    \n\nRegisteer akan Gagal jika email sudah ada dalam database\n\nRespon yang di kirmkan dari login user yaitu JWT Token yang berisi id_admin, nama dan role,\n\nRole di pisahkan menjadi 2 yaitu 1 unutk admin dan 2 untuk user"
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Login_admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"barjafaskan9@gmail.com\",\n    \"password\":\"Barisan123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/loginadmin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"loginadmin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODIyMzY3MzgsImlkX2FkbWluIjoxLCJuYW1lIjoiYWRtaW4xIiwicm9sZSI6MX0.sBx9WAiMzOmlfj-nw2YPxEMGHYS-KsLcZcbti0XYTfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\":\"0\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/deleteuser/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"deleteuser",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_statistik",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2ODIyMzY3MzgsImlkX2FkbWluIjoxLCJuYW1lIjoiYWRtaW4xIiwicm9sZSI6MX0.sBx9WAiMzOmlfj-nw2YPxEMGHYS-KsLcZcbti0XYTfo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"Status\":\"Sukses\",\n    \"data\":{\n        \"total_user\":\"1\",\n        \"total_course\":\"3\",\n        \"total_course_free\":\"\"\n\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/getstatistik",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"getstatistik"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register_admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama\":\"bagjaLazwardi\",\n    \"email\":\"Barjafaskan9102@gmail.com\",\n    \"password\":\"Barisan123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "dalam folder adminterdiri dari beberapa reques yaitu :\n\n1. Register Admin denga .memaukan nama, email dan paswword\n2. Login admin yang memiliki respon JWT untu Admin dengan role = 1\n3. Delete User dengan type delete yaitu soft delete,\n4. Get_statistik dengan respon jumlah dari courese, jumlah user dan jumlah free course"
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "getAllcourse",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/getAllcourses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"getAllcourses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:9000/getcourse/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"getcourse",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_course\":\"Belajar Excel dasar 3\",\n    \"deskripsi_course\":\"Ini adalah Materi dari excel dasar 3 \",\n    \"foto_course\":\"ini adalah foto dari Course excel data 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/courses",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"courses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_course",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nama_course\":\"Course Ini telah di ubah\",\n    \"deskripsi_course\":\"Ini adalah Materi dari excel dasar 3 \",\n    \"foto_course\":\"ini adalah foto dari Course excel data 3\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/admin/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"admin",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"is_active\":\"1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:9000/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_categori_course",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Get_all CAetgori",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Searc_course",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"description": "dalam folder ini terdiri dari beberapa course yaitu\n\n1. GetAllcourse yang hanya bisa di akses dengan menggunakan JWT User dan bi sortby berdasarkan Harga terbesar, terkecil dan freee....?sortby=lowest_price, highest_price and free_price\n2. Get Course yang hanya bisa akses dengan JWT User\n3. Create Course yang hanya bisa i akses dengan JWT Admin\n4. Update Course yang bisa di akses dengan jwt admin\n5. Get Categori Course yang hanya bisa di akses JWT dari Users\n6. Get All CAtegory yang bisa di akses menggunakan JWT User\n7. Search Course yang bisa di akses dengan JWT User"
+		}
+	]
+}
