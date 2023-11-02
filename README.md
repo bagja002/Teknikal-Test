@@ -1,4 +1,4 @@
-# Developer-Test-Waizly
+# Developer-Teknikal-Test
 
 File main.go berisi tentang 3 Test Teknikal 
 1. Menceari SUMMinimal SUMMaximal pada 5 bilangan
